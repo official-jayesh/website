@@ -6,6 +6,20 @@
   <meta name="theme-color" content="#07080c">
   <meta name="description" content="The personal website of Jayesh Singh — a digital space currently under development.">
   <title>Jayesh Singh — Digital Space</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jayesh Singh — Digital Space">
+  <meta property="og:description" content="A futuristic, space-inspired personal space under development.">
+  <meta property="og:type" content="website">
+
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,10 +28,17 @@
     <div class="moving-stars stars-near"></div>
     <div class="galaxy galaxy-one"></div>
     <div class="galaxy galaxy-two"></div>
-    <div class="shooting-star shooting-one"></div>
-    <div class="shooting-star shooting-two"></div>
-    <div class="shooting-star shooting-three"></div>
   </div>
+
+  <!-- Pure CSS Shooting Stars (Always visible across all desktop browsers & privacy modes) -->
+  <div class="css-shooting-stars" aria-hidden="true">
+    <div class="shooting-star-css css-star-1"></div>
+    <div class="shooting-star-css css-star-2"></div>
+    <div class="shooting-star-css css-star-3"></div>
+  </div>
+
+  <!-- Hardware-Accelerated Canvas (Dynamic interactive meteors) -->
+  <canvas id="shootingStarsCanvas" class="shooting-stars-canvas" aria-hidden="true"></canvas>
 
   <div class="background" aria-hidden="true">
     <div class="aurora aurora-one"></div>
@@ -30,19 +51,23 @@
 
   <main class="page">
     <header class="topbar">
-      <a class="brand" href="/" aria-label="Jayesh Singh home">
+      <a class="brand" href="./" aria-label="Jayesh Singh home">
         <span>J</span>S<span class="brand-dot">.</span>
       </a>
 
       <div class="top-meta">
-        <span class="live-dot"></span>
+        <button id="soundToggle" class="sound-toggle is-active" type="button" aria-label="Toggle cosmic sound effects" title="Toggle audio effects">
+          <span class="sound-icon" aria-hidden="true">🔊</span>
+          <span class="sound-label">SFX: ON</span>
+        </button>
+        <span class="live-dot" aria-hidden="true"></span>
         <span>Digital space / 001</span>
       </div>
     </header>
 
     <section class="hero">
       <div class="eyebrow">
-        <span class="eyebrow-line"></span>
+        <span class="eyebrow-line" aria-hidden="true"></span>
         A LITTLE CORNER OF THE INTERNET
       </div>
 
@@ -60,22 +85,22 @@
       </p>
 
       <div class="status-card">
-        <div class="status-accent"></div>
+        <div class="status-accent" aria-hidden="true"></div>
         <div class="status-copy">
           <span class="status-label">CURRENT STATUS</span>
           <strong>Under Development</strong>
         </div>
-        <div class="status-orbit"><span></span></div>
+        <div class="status-orbit" aria-hidden="true"><span></span></div>
       </div>
 
-      <div class="coming">
+      <div class="coming" aria-label="More to come">
         <span>MORE TO COME</span>
-        <i></i><i></i><i></i>
+        <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
       </div>
     </section>
 
-    <aside class="puppy" id="puppy" role="button" tabindex="0" aria-label="Click the puppy to make it run">
-      <div class="puppy-bubble" id="puppyBubble">Will you play with me? I'm Bored🥺...</div>
+    <aside class="puppy" id="puppy" role="button" tabindex="0" aria-label="Interactive puppy companion. Click to play with him." aria-describedby="puppyBubble">
+      <div class="puppy-bubble" id="puppyBubble" aria-live="polite">Will you play with me? I'm Bored🥺...</div>
 
       <div class="puppy-art">
         <div class="tail"></div>
@@ -100,7 +125,7 @@
         <div class="paw paw-front"></div>
       </div>
 
-      <div class="puppy-shadow"></div>
+      <div class="puppy-shadow" aria-hidden="true"></div>
     </aside>
 
     <footer>
